@@ -48,7 +48,7 @@ async def next_page(bot, query):
         offset = 0
     search = BUTTONS.get(key)
     if not search:
-        await query.answer("Uɴɢᴀʟᴜᴋᴜ Vᴇɴᴜɢᴜʀᴀ Fɪʟᴇs Nᴀᴍᴇ Aʜ Tʜɪʀᴜᴍʙɪ Sᴇɴᴅ Pᴀɴɴᴜɴɢᴀ.", show_alert=True)
+        await query.answer("Yᴏᴜ ᴀʀᴇ ᴜꜱɪɴɢ ᴏɴᴇ ᴏғ ᴍʏ ᴏʟᴅ ᴍᴇꜱꜱᴀɢᴇꜱ, ᴘʟᴇᴀꜱᴇ ꜱᴇɴᴅ ᴛʜᴇ ʀᴇǫᴜᴇꜱᴛ ᴀɢᴀɪɴ.", show_alert=True)
         return
 
     files, n_offset, total = await get_search_results(search, offset=offset, filter=True)
@@ -82,6 +82,17 @@ async def next_page(bot, query):
             ]
             for file in files
         ]
+        btn.insert(0, 
+        [
+            InlineKeyboardButton('Share ans Support Us', url='https://t.me/Get_Update_Official')
+        ]
+    )
+    btn.insert(1, 
+        [
+            InlineKeyboardButton('Channel', url='https://t.me/Get_Update_Official'),
+            InlineKeyboardButton('Contact', url='https://t.me/Harsh_Kumar0001')
+        ]
+    )
 
     if 0 < offset <= 10:
         off_set = 0
@@ -120,14 +131,14 @@ async def next_page(bot, query):
 async def advantage_spoll_choker(bot, query):
     _, user, movie_ = query.data.split('#')
     if int(user) != 0 and query.from_user.id != int(user):
-        return await query.answer("okDa", show_alert=True)
+        return await query.answer("This Message is not for you dear. Don't worry you can send new one !", show_alert=True)
     if movie_ == "close_spellcheck":
         return await query.message.delete()
     movies = SPELL_CHECK.get(query.message.reply_to_message.id)
     if not movies:
-        return await query.answer("Nᴇɴɢᴀ Exᴘɪʀᴇᴅ Aɴᴀ Bᴜᴛᴛᴏɴ Cʟɪᴄᴋ Pᴀɴɴɪʀᴜᴋɪɴɢᴀ", show_alert=True)
+        return await query.answer("You are clicking on an old button which is expired", show_alert=True)
     movie = movies[(int(movie_))]
-    await query.answer('Cʜᴇᴄᴋɪɴɢ Fɪʟᴇs Iɴ Mʏ Lᴏᴅɢᴇ..')
+    await query.answer('Checking for Movie in database...')
     k = await manual_filters(bot, query.message, text=movie)
     if k == False:
         files, offset, total_results = await get_search_results(movie, offset=0, filter=True)
@@ -135,7 +146,7 @@ async def advantage_spoll_choker(bot, query):
             k = (movie, files, offset, total_results)
             await auto_filter(bot, query, k)
         else:
-            k = await query.message.edit('Nᴇɴɢᴀ Kᴇᴛᴀ Fɪʟᴇs Yᴇɴɴᴏᴅᴀ Lᴏᴅɢᴇ Lᴀ Iʟʟᴀ')
+            k = await query.message.edit('ᴛʜɪs ᴍᴏᴠɪᴇs ɪs ɴᴏᴛ ᴀᴠᴀɪʟᴀʙʟᴇ ɪɴ ᴍʏ ᴅᴀᴛᴀʙᴀsᴇ ᴏʀ ᴛʀʏ ᴀɢᴀɪɴ ᴡɪᴛʜ ᴄᴏʀʀᴇᴄᴛ sᴘᴇʟʟɪɴɢ')
             await asyncio.sleep(10)
             await k.delete()
 
@@ -156,27 +167,27 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     chat = await client.get_chat(grpid)
                     title = chat.title
                 except:
-                    await query.message.edit_text("Nᴀ Iɴɴᴜᴍ Eɴᴛʜᴀ Gʀᴏᴜᴘ Lᴀʏᴜᴍ Cᴏɴɴᴇᴄᴛ Aɢᴀʟᴀ!!", quote=True)
-                    return await query.answer('Tʜᴇᴛᴇʀ & Oᴛᴛ Kᴜ Kᴀsᴜ Iʟʟᴀ Yᴀ ♥️ Nᴀ Iʀᴜᴋᴋᴇɴ')
+                    await query.message.edit_text("Mᴀᴋᴇ ꜱᴜʀᴇ I'ᴍ ᴘʀᴇꜱᴇɴᴛ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ!!", quote=True)
+                    return await query.answer('♥️ Support Us ♥️')
             else:
                 await query.message.edit_text(
                     "I'm not connected to any groups!\nCheck /connections or connect to any groups",
                     quote=True
                 )
-                return await query.answer('Tʜᴇᴛᴇʀ & Oᴛᴛ Kᴜ Kᴀsᴜ Iʟʟᴀ Yᴀ ♥️ Nᴀ Iʀᴜᴋᴋᴇɴ')
+                return await query.answer('♥️ Support Us ♥️')
 
         elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
             grp_id = query.message.chat.id
             title = query.message.chat.title
 
         else:
-            return await query.answer('Tʜᴇᴛᴇʀ & Oᴛᴛ Kᴜ Kᴀsᴜ Iʟʟᴀ Yᴀ ♥️ Nᴀ Iʀᴜᴋᴋᴇɴ')
+            return await query.answer('♥️ Support Us ♥️')
 
         st = await client.get_chat_member(grp_id, userid)
         if (st.status == enums.ChatMemberStatus.OWNER) or (str(userid) in ADMINS):
             await del_all(query.message, grp_id, title)
         else:
-            await query.answer("Nᴇɴɢᴀ Gʀᴏᴜᴘ Iᴡɴᴇʀ Oʀ Aᴜᴛʜ Usᴇʀ Aʜ Eʀᴜɴᴛʜᴀ Mᴀᴀᴛᴜᴍ Tʜᴀ Wᴏʀᴋ Aɢᴜᴍ!", show_alert=True)
+            await query.answer("Yᴏᴜ ɴᴇᴇᴅ ᴛᴏ ʙᴇ Gʀᴏᴜᴘ Oᴡɴᴇʀ ᴏʀ ᴀɴ Aᴜᴛʜ Uꜱᴇʀ ᴛᴏ ᴅᴏ ᴛʜᴀᴛ!", show_alert=True)
     elif query.data == "delallcancel":
         userid = query.from_user.id
         chat_type = query.message.chat.type
@@ -195,7 +206,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 except:
                     pass
             else:
-                await query.answer("Eᴛʜᴜ Uɴɢᴀʟᴜᴋᴜ Iʟʟᴀ!!", show_alert=True)
+                await query.answer("ᴛʜɪs ɪs ɴᴏᴛ ғᴏʀ ʏᴏᴜ!!", show_alert=True)
     elif "groupcb" in query.data:
         await query.answer()
 
@@ -224,7 +235,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=keyboard,
             parse_mode=enums.ParseMode.MARKDOWN
         )
-        return await query.answer('Tʜᴇᴛᴇʀ & Oᴛᴛ Kᴜ Kᴀsᴜ Iʟʟᴀ Yᴀ ♥️ Nᴀ Iʀᴜᴋᴋᴇɴ')
+        return await query.answer('♥️ Support Us ♥️')
     elif "connectcb" in query.data:
         await query.answer()
 
@@ -245,7 +256,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             )
         else:
             await query.message.edit_text('Some error occurred!!', parse_mode=enums.ParseMode.MARKDOWN)
-        return await query.answer('Tʜᴇᴛᴇʀ & Oᴛᴛ Kᴜ Kᴀsᴜ Iʟʟᴀ Yᴀ ♥️ Nᴀ Iʀᴜᴋᴋᴇɴ')
+        return await query.answer('♥️ Support Us ♥️')
     elif "disconnect" in query.data:
         await query.answer()
 
@@ -268,7 +279,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 f"Some error occurred!!",
                 parse_mode=enums.ParseMode.MARKDOWN
             )
-        return await query.answer('Piracy Is Crime')
+        return await query.answer('♥️ Support Us ♥️')
     elif "deletecb" in query.data:
         await query.answer()
 
@@ -286,7 +297,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                 f"Some error occurred!!",
                 parse_mode=enums.ParseMode.MARKDOWN
             )
-        return await query.answer('Tʜᴇᴛᴇʀ & Oᴛᴛ Kᴜ Kᴀsᴜ Iʟʟᴀ Yᴀ ♥️ Nᴀ Iʀᴜᴋᴋᴇɴ')
+        return await query.answer('♥️ Support Us ♥️')
     elif query.data == "backcb":
         await query.answer()
 
@@ -295,9 +306,9 @@ async def cb_handler(client: Client, query: CallbackQuery):
         groupids = await all_connections(str(userid))
         if groupids is None:
             await query.message.edit_text(
-                "Nᴀ Iɴɴᴜᴍ Eɴᴛʜᴀ Gʀᴏᴜᴘ Lᴀʏᴜᴍ Cᴏɴɴᴇᴄᴛ Aɢᴀʟᴀ.",
+                "Tʜᴇʀᴇ ᴀʀᴇ ɴᴏ ᴀᴄᴛɪᴠᴇ ᴄᴏɴɴᴇᴄᴛɪᴏɴꜱ!! Cᴏɴɴᴇᴄᴛ ᴛᴏ ꜱᴏᴍᴇ ɢʀᴏᴜᴘꜱ ғɪʀꜱᴛ.",
             )
-            return await query.answer('Tʜᴇᴛᴇʀ & Oᴛᴛ Kᴜ Kᴀsᴜ Iʟʟᴀ Yᴀ ♥️ Nᴀ Iʀᴜᴋᴋᴇɴ')
+            return await query.answer('♥️ Support Us ♥️')
         buttons = []
         for groupid in groupids:
             try:
@@ -333,7 +344,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
         ident, file_id = query.data.split("#")
         files_ = await get_file_details(file_id)
         if not files_:
-            return await query.answer( ' Fɪʟᴇ Kᴀɴᴀᴘᴏᴄʜɪ 😬. ')
+            return await query.answer( 'ɴᴏ sᴜᴄʜ ғɪʟᴇ ᴇxɪᴛs.')
         files = files_[0]
         title = files.file_name
         size = get_size(files.file_size)
@@ -364,7 +375,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     caption=f_caption,
                     protect_content=True if ident == "filep" else False 
                 )
-                await query.answer('Bᴀᴄᴋ Bᴜᴛᴛᴏɴ Cʟɪᴄᴋ Pᴀɴɴɪ Fɪʟᴇs Aʜ Dᴏᴡɴʟᴏᴀᴅ Pᴀɴɴɪᴋᴏɴɢᴀ', show_alert=True)
+                await query.answer('Check PM, I have sent files in pm', show_alert=True)
         except UserIsBlocked:
             await query.answer('Uɴʙʟᴏᴄᴋ Tʜᴇ Bᴏᴛ Mᴀᴀʜ !', show_alert=True)
         except PeerIdInvalid:
@@ -373,12 +384,12 @@ async def cb_handler(client: Client, query: CallbackQuery):
             await query.answer(url=f"https://t.me/{temp.U_NAME}?start={ident}_{file_id}")
     elif query.data.startswith("checksub"):
         if AUTH_CHANNEL and not await is_subscribed(client, query):
-            await query.answer("Iᴛʜᴜᴛʜᴀɴ Uʀᴜᴛᴛᴜ ✓ Fɪʀsᴛ Jᴏɪɴ Pᴀɴɴɪᴛᴜ Iᴛʜᴀ Cʟɪᴄᴋ Pᴀɴɴᴜɴɢᴀ 😒", show_alert=True)
+            await query.answer("I Lɪᴋᴇ Yᴏᴜʀ Sᴍᴀʀᴛɴᴇꜱꜱ, Bᴜᴛ Dᴏɴ'ᴛ Bᴇ Oᴠᴇʀꜱᴍᴀʀᴛ 😒", show_alert=True)
             return
         ident, file_id = query.data.split("#")
         files_ = await get_file_details(file_id)
         if not files_:
-            return await query.answer('Fɪʟᴇ Kᴀɴᴀᴘᴏᴄʜɪ 😬.')
+            return await query.answer('ɴᴏ sᴜᴄʜ ғɪʟᴇ ᴇxɪsᴛs.')
         files = files_[0]
         title = files.file_name
         size = get_size(files.file_size)
@@ -404,14 +415,14 @@ async def cb_handler(client: Client, query: CallbackQuery):
         await query.answer()
     elif query.data == "start":
         buttons = [[
-            InlineKeyboardButton('➕ Aᴅᴅ Mᴇ Tᴏ Uʀ Gʀᴏᴜᴘs ➕', url=f'http://t.me/{temp.U_NAME}?startgroup=true')
+            InlineKeyboardButton('Update', url='https://t.me/Get_Update_Official'),
+            InlineKeyboardButton('Movies', url='https://t.me/Movie_Factory1')
             ],[
-            InlineKeyboardButton('🔍 Sᴇᴀʀᴄʜ', switch_inline_query_current_chat=''),
-            InlineKeyboardButton('🤖 Uᴘᴅᴀᴛᴇs', url='https://t.me/Tamilan_BotsZ')
+            InlineKeyboardButton('Support', url='https://t.me/Get_Update_Official'),
             ],[
-            InlineKeyboardButton('ℹ️ Hᴇʟᴘ', callback_data='help'),
-            InlineKeyboardButton('👩‍💻 Rᴇᴘᴏ', url='https://Github.Com/TamilanBotsZ/AwesomeFilter'),
-            InlineKeyboardButton('😊 Aʙᴏᴜᴛ', callback_data='about')
+            InlineKeyboardButton('👋 ᴇxᴛʀᴀ ʙᴜᴛᴛᴏɴs 👋', callback_data='about'),
+            ],[
+            InlineKeyboardButton('🔐 ᴄʟᴏsᴇ 🔐', callback_data='close_data')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         await query.message.edit_text(
@@ -419,7 +430,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
             reply_markup=reply_markup,
             parse_mode=enums.ParseMode.HTML
         )
-        await query.answer('Tʜᴇᴛᴇʀ & Oᴛᴛ Kᴜ Kᴀsᴜ Iʟʟᴀ Yᴀ ♥️ Nᴀ Iʀᴜᴋᴋᴇɴ')
+        await query.answer('Support Us')
     elif query.data == "help":
         buttons = [[
             InlineKeyboardButton('Manual Filter', callback_data='manuelfilter'),
@@ -439,14 +450,23 @@ async def cb_handler(client: Client, query: CallbackQuery):
         )
     elif query.data == "about":
         buttons = [[
-            InlineKeyboardButton('🤖 Uᴘᴅᴀᴛᴇs', url='https://t.me/Tamilan_BotsZ'),
-            InlineKeyboardButton('♥️ Sᴏᴜʀᴄᴇ', callback_data='source')
-        ], [
-            InlineKeyboardButton('🏠 Hᴏᴍᴇ', callback_data='start'),
-            InlineKeyboardButton('👩‍💻 Rᴇᴘᴏ', url='https://Github.Com/TamilanBotsZ/AwesomeFilter'),
-            InlineKeyboardButton('🔐 Cʟᴏsᴇ', callback_data='close_data')
+            InlineKeyboardButton('Owner', url='https://t.me/Harsh_Kumar0001'),
+            InlineKeyboardButton('Update', url='https://t.me/Get_Update_Official'),
+        ],[
+            InlineKeyboardButton('😍 sʜᴀʀᴇ ᴍᴇ 😍', url=f'https://t.me/share/url?url=t.me/{temp.U_NAME}'),
+        ],[
+            InlineKeyboardButton('🔐 ᴄʟᴏsᴇ 🔐', callback_data='close_data')
         ]]
         reply_markup = InlineKeyboardMarkup(buttons)
+        await query.message.edit_text(
+            text="▣ ▢ ▢"
+        )
+        await query.message.edit_text(
+            text="▣ ▣ ▢"
+        )
+        await query.message.edit_text(
+            text="▣ ▣ ▣"
+        )  
         await query.message.edit_text(
             text=script.ABOUT_TXT.format(temp.B_NAME),
             reply_markup=reply_markup,
@@ -567,7 +587,7 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         if str(grp_id) != str(grpid):
             await query.message.edit("Your Active Connection Has Been Changed. Go To /settings.")
-            return await query.answer('Tʜᴇᴛᴇʀ & Oᴛᴛ Kᴜ Kᴀsᴜ Iʟʟᴀ Yᴀ ♥️ Nᴀ Iʀᴜᴋᴋᴇɴ ')
+            return await query.answer('Share and Support Us')
 
         if status == "True":
             await save_group_settings(grpid, set_type, False)
@@ -662,6 +682,11 @@ async def auto_filter(client, msg, spoll=False):
             ]
             for file in files
         ]
+        btn.insert(0, 
+        [
+            InlineKeyboardButton('Share and Support Us', url='https://t.me/Get_Update_Official')
+        ]
+    )
 
     if offset != "":
         key = f"{message.chat.id}-{message.id}"
@@ -710,7 +735,7 @@ async def auto_filter(client, msg, spoll=False):
             **locals()
         )
     else:
-        cap = f"<b><i>Movie Name : {search}\nRequested By : {message.from_user.mention}\nGroup : {message.chat.title}</i></b>"
+        cap = f"Hᴇʀᴇ ɪꜱ ᴡʜᴀᴛ ɪ ғᴏᴜɴᴅ ғᴏʀ ʏᴏᴜʀ ǫᴜᴇʀʏ {search}"
     if imdb and imdb.get('poster'):
         try:
             hehe = await message.reply_photo(photo=imdb.get('poster'), caption=cap, reply_markup=InlineKeyboardMarkup(btn))
@@ -769,7 +794,7 @@ async def advantage_spell_chok(msg):
     movielist += [(re.sub(r'(\-|\(|\)|_)', '', i, flags=re.IGNORECASE)).strip() for i in gs_parsed]
     movielist = list(dict.fromkeys(movielist))  # removing duplicates
     if not movielist:
-        k = await msg.reply("Cᴏʀʀᴇᴄᴛ Aɴᴀ Sᴘᴇʟʟɪɴɢ Oᴅᴀ Sᴇɴᴅ Pᴀɴɴᴜɴɢᴀ")
+        k = await msg.reply("I couldn't find anything related to that. Check your spelling")
         await asyncio.sleep(8)
         await k.delete()
         return
@@ -781,7 +806,7 @@ async def advantage_spell_chok(msg):
         )
     ] for k, movie in enumerate(movielist)]
     btn.append([InlineKeyboardButton(text="Close", callback_data=f'spolling#{user}#close_spellcheck')])
-    await msg.reply("Nᴇɴɢᴀ KᴇᴛᴛᴀTʜᴜ Iᴛʜᴜ Vᴀ \nEᴛʜᴜʟᴀ Eᴛʜᴜ Nᴇɴɢᴀ Kᴇᴛᴛᴀᴛʜᴜ?",
+    await msg.reply("I couldn't find anything related to that\nDid you mean any one of these?",
                     reply_markup=InlineKeyboardMarkup(btn))
 
 
