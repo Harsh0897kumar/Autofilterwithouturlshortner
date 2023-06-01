@@ -26,7 +26,7 @@ async def save_group(bot, message):
             ]]
             reply_markup=InlineKeyboardMarkup(buttons)
             k = await message.reply(
-                text='<b>CHAT NOT ALLOWED 🐞\n\nGᴀʏᴀ,Tᴀᴛᴀ,Gᴏᴏᴅ Bʏᴇ :- Cᴏɴᴛᴀᴄᴛ Aᴅᴍɪ</b>',
+                text='<b>CHAT NOT ALLOWED 🐞\n\nMʏ ᴀᴅᴍɪɴꜱ ʜᴀꜱ ʀᴇꜱᴛʀɪᴄᴛᴇᴅ ᴍᴇ ғʀᴏᴍ ᴡᴏʀᴋɪɴɢ ʜᴇʀᴇ ! Iғ ʏᴏᴜ ᴡᴀɴᴛ ᴛᴏ ᴋɴᴏᴡ ᴍᴏʀᴇ ᴀʙᴏᴜᴛ ɪᴛ ᴄᴏɴᴛᴀᴄᴛ ꜱᴜᴘᴘᴏʀᴛ..</b>',
                 reply_markup=reply_markup,
             )
 
@@ -38,12 +38,11 @@ async def save_group(bot, message):
             return
         buttons = [[
             InlineKeyboardButton('ℹ️ Help', url=f"https://t.me/{temp.U_NAME}?start=help"),
-            InlineKeyboardButton('👩‍💻 Rᴇᴘᴏ', url='https://Github.Com/TamilanBotsZ/AwesomeFilter'),
-            InlineKeyboardButton('📢 Updates', url='https://t.me/Tamilan_BotsZ')
+            InlineKeyboardButton('📢 Updates', url='https://t.me/Get_Update_Official')
         ]]
         reply_markup=InlineKeyboardMarkup(buttons)
         await message.reply_text(
-            text=f"<b>💌 Aᴅᴅ PᴀɴɴᴀTʜᴜᴋᴜ Nᴀɴᴅʀɪ ♥️ {message.chat.title} ❣️\n\nIf you have any questions & doubts about using me contact support.</b>",
+            text=f"<b>💌 ᴛʜᴀɴᴋs ғᴏʀ ᴀᴅᴅɪɴɢ ᴍᴇ ɪɴ ♥️ {message.chat.title} ❣️\n\nIf you have any questions & doubts about using me contact support.</b>",
             reply_markup=reply_markup)
     else:
         settings = await get_settings(message.chat.id)
@@ -85,7 +84,7 @@ async def leave_a_chat(bot, message):
 @Client.on_message(filters.command('disable') & filters.user(ADMINS))
 async def disable_chat(bot, message):
     if len(message.command) == 1:
-        return await message.reply('Cʜᴀᴛ Iᴅ Tʜᴀɴɢᴀ')
+        return await message.reply('ɢɪᴠᴇ ᴍᴇ ᴀ ᴄʜᴀᴛ ɪᴅ')
     r = message.text.split(None)
     if len(r) > 2:
         reason = message.text.split(None, 2)[2]
@@ -96,12 +95,12 @@ async def disable_chat(bot, message):
     try:
         chat_ = int(chat)
     except:
-        return await message.reply('Cᴏʀʀᴇᴄᴛ Aɴᴀ Cʜᴀᴛ Iᴅ Kᴜᴅᴜɴɢᴀ')
+        return await message.reply('ɢɪᴠᴇ ᴍᴇ ᴀ ᴠᴀʟɪᴅ ᴄʜᴀᴛ ɪᴅ')
     cha_t = await db.get_chat(int(chat_))
     if not cha_t:
-        return await message.reply("Uɴɢᴀ Cʜᴀᴛ Nᴏᴛ Fᴏᴜɴᴅ Iɴ Mʏ Lᴏᴅɢᴇ")
+        return await message.reply("ᴄʜᴀᴛ ɴᴏᴛ ғᴏᴜɴᴅ ɪɴ ᴍʏ ᴅʙ")
     if cha_t['is_disabled']:
-        return await message.reply(f"Iɴᴛʜᴀ Cʜᴀᴛ Aʟʀᴇᴀᴅʏ Dɪsᴀʙʟᴇᴅ:\nReason-<code> {cha_t['reason']} </code>")
+        return await message.reply(f"ᴛʜɪs ᴄʜᴀᴛ ɪs ᴀʟʀᴇᴀᴅʏ ᴅɪsᴀʙʟᴇᴅ:\nReason-<code> {cha_t['reason']} </code>")
     await db.disable_chat(int(chat_), reason)
     temp.BANNED_CHATS.append(int(chat_))
     await message.reply('🔱 SᴜᴄᴄᴇsFᴜʟʟʏ DɪsCᴏɴɴᴇᴄᴛᴇᴅ 🙄')
@@ -112,7 +111,7 @@ async def disable_chat(bot, message):
         reply_markup=InlineKeyboardMarkup(buttons)
         await bot.send_message(
             chat_id=chat_, 
-            text=f'<b>Hᴇʟʟᴏ Fʀɪᴇɴs, \nMʏ ᴀᴅᴍɪɴ ʜᴀs ᴛᴏʟᴅ ᴍᴇ ᴛᴏ ʟᴇᴀᴠᴇ ғʀᴏᴍ ɢʀᴏᴜᴘ sᴏ ɪ ɢᴏ! Iғ ʏᴏᴜ ᴡᴀɴɴᴀ ᴀᴅᴅ ᴍᴇ ᴀɢᴀɪɴ ᴄᴏɴᴛᴀᴄᴛ ᴍʏ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ.</b> \nReason : <code>{reason}</code>',
+            text=f'<b>ʜᴇʟʟᴏ ғʀɪᴇɴᴅ, \nMʏ ᴀᴅᴍɪɴ ʜᴀs ᴛᴏʟᴅ ᴍᴇ ᴛᴏ ʟᴇᴀᴠᴇ ғʀᴏᴍ ɢʀᴏᴜᴘ sᴏ ɪ ɢᴏ! Iғ ʏᴏᴜ ᴡᴀɴɴᴀ ᴀᴅᴅ ᴍᴇ ᴀɢᴀɪɴ ᴄᴏɴᴛᴀᴄᴛ ᴍʏ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ.</b> \nReason : <code>{reason}</code>',
             reply_markup=reply_markup)
         await bot.leave_chat(chat_)
     except Exception as e:
@@ -122,20 +121,20 @@ async def disable_chat(bot, message):
 @Client.on_message(filters.command('enable') & filters.user(ADMINS))
 async def re_enable_chat(bot, message):
     if len(message.command) == 1:
-        return await message.reply('Cʜᴀᴛ Iᴅ Sᴇɴᴅ Pᴀɴɴᴜɴɢᴀ')
+        return await message.reply('ɢɪᴠᴇ ᴍᴇ ᴀ ᴄʜᴀᴛ ɪᴅ')
     chat = message.command[1]
     try:
         chat_ = int(chat)
     except:
-        return await message.reply('Cᴏʀʀᴇᴄᴛ Aʜ Cʜᴀᴛ Iᴅ Kᴜᴅᴜɴɢᴀ')
+        return await message.reply('ɢɪᴠᴇ ᴍᴇ ᴀ ᴠᴀʟɪᴅ ᴄʜᴀᴛ ɪᴅ')
     sts = await db.get_chat(int(chat))
     if not sts:
-        return await message.reply("Cʜᴀᴛ Nᴏᴛ Fᴏᴜɴᴅ Iɴ Nʏ Lᴏᴅɢᴇ !")
+        return await message.reply("ᴄʜᴀᴛ ɴᴏᴛ ғᴏᴜɴᴅ ɪɴ ᴍʏ ᴅʙ !")
     if not sts.get('is_disabled'):
-        return await message.reply('Tɢɪs Cʜᴀᴛ Nᴏ Yᴇᴛ Dɪsᴀʙʟᴇ')
+        return await message.reply('ᴛʜɪs ᴄʜᴀᴛ ɪs ɴᴏᴛ ʏᴇᴛ ᴅɪsᴀʙʟᴇᴅ.')
     await db.re_enable_chat(int(chat_))
     temp.BANNED_CHATS.remove(int(chat_))
-    await message.reply("Cʜᴀᴛ Aʜ Rᴇ-Eɴᴀʙʟᴇ Pᴀɴɴɪʏᴀᴄʜɪ")
+    await message.reply("ᴄʜᴀᴛ sᴜᴄᴄᴇssғᴜʟʟʏ ʀᴇ-ᴇɴᴀʙʟᴇᴅ")
 
 
 @Client.on_message(filters.command('stats') & filters.incoming)
@@ -156,16 +155,16 @@ async def get_ststs(bot, message):
 # @Client.on_message(filters.command('invite') & filters.user(ADMINS))
 async def gen_invite(bot, message):
     if len(message.command) == 1:
-        return await message.reply('Cʜᴀᴛ Iᴅ Sᴇɴᴅ Pᴀɴɴᴜɴɢᴀ')
+        return await message.reply('ɢɪᴠᴇ ᴍᴇ ᴀ ᴄʜᴀᴛ ɪᴅ')
     chat = message.command[1]
     try:
         chat = int(chat)
     except:
-        return await message.reply('Cᴏʀʀᴇᴄᴛ Aʜ Cʜᴀᴛ Iᴅ Kᴜᴅᴜɴɢᴀ')
+        return await message.reply('ɢɪᴠᴇ ᴍᴇ ᴀ ᴠᴀʟɪᴅ ᴄʜᴀᴛ ɪᴅ')
     try:
         link = await bot.create_chat_invite_link(chat)
     except ChatAdminRequired:
-        return await message.reply("Iɴᴠɪᴛᴇ Lɪɴᴋ Gᴇɴᴇʀᴀᴛᴇ Pᴀɴɴᴀ Aᴅᴍɪɴ Rɪɢʜᴛ Kᴜᴅᴜᴋᴀʟᴀ")
+        return await message.reply("Iɴᴠɪᴛᴇ Lɪɴᴋ Gᴇɴᴇʀᴀᴛɪᴏɴ Fᴀɪʟᴇᴅ, Iᴀᴍ Nᴏᴛ Hᴀᴠɪɴɢ Sᴜғғɪᴄɪᴇɴᴛ Rɪɢʜᴛꜱ")
     except Exception as e:
         return await message.reply(f'Error {e}')
     await message.reply(f'Uɴɢᴀ Iɴᴠɪᴛᴇ Lɪɴᴋ Hᴇʀᴇ {link.invite_link}')
@@ -174,7 +173,7 @@ async def gen_invite(bot, message):
 async def ban_a_user(bot, message):
     # https://t.me/GetTGLink/4185
     if len(message.command) == 1:
-        return await message.reply('Uɴɢᴀ Usᴇʀ ɪᴅ / Usᴇʀ Nᴀᴍᴇ Kᴜᴅᴜɴɢᴀ')
+        return await message.reply('ɢɪᴠᴇ ᴍᴇ ᴀ ɪᴅ/ᴜsᴇʀɴᴀᴍᴇ')
     r = message.text.split(None)
     if len(r) > 2:
         reason = message.text.split(None, 2)[2]
@@ -197,7 +196,7 @@ async def ban_a_user(bot, message):
     else:
         jar = await db.get_ban_status(k.id)
         if jar['is_banned']:
-            return await message.reply(f"{k.mention} is already banned\nReason: {jar['ban_reason']}")
+            return await message.reply(f"{k.mention} ɪs ᴀʟʀᴇᴀᴅʏ ʙᴀɴɴᴇᴅ\nReason: {jar['ban_reason']}")
         await db.ban_user(k.id, reason)
         temp.BANNED_USERS.append(k.id)
         await message.reply(f"SᴜᴄᴄᴇsFᴜʟʟʏ Bᴀɴɴᴇᴅ 🙄 {k.mention}")
@@ -207,7 +206,7 @@ async def ban_a_user(bot, message):
 @Client.on_message(filters.command('unban') & filters.user(ADMINS))
 async def unban_a_user(bot, message):
     if len(message.command) == 1:
-        return await message.reply('Uɴɢᴀ Usᴇʀ ɪᴅ / Usᴇʀ Nᴀᴍᴇ Kᴜᴅᴜɴɢᴀ')
+        return await message.reply('ɢɪᴠᴇ ᴍᴇ ᴀ ᴜsᴇʀ ɪᴅ/ᴜsᴇʀɴᴀᴍᴇ')
     r = message.text.split(None)
     if len(r) > 2:
         reason = message.text.split(None, 2)[2]
