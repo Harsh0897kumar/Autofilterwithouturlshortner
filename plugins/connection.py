@@ -12,7 +12,7 @@ logger.setLevel(logging.ERROR)
 async def addconnection(client, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
-        return await message.reply(f"Nᴇɴɢᴀ Aᴅᴅʀᴇss Iʟʟᴀ Tʜᴀ Aᴅᴍɪɴ 🤣 Use /connect {message.chat.id} in PM")
+        return await message.reply(f"Yᴏᴜ ᴀʀᴇ ᴀɴᴏɴʏᴍᴏᴜꜱ ᴀᴅᴍɪɴ. Uꜱᴇ/connect {message.chat.id} in PM")
     chat_type = message.chat.type
 
     if chat_type == enums.ChatType.PRIVATE:
@@ -22,7 +22,7 @@ async def addconnection(client, message):
             await message.reply_text(
                 "<b>Enter in correct format!</b>\n\n"
                 "<code>/connect groupid</code>\n\n"
-                "<i>Yᴇɴɴᴀ Uɴɢᴀ Gʀᴏᴜᴘ Lᴀ Aᴅᴅ Pᴀɴɴɪ Gʀᴏᴜᴘ Iᴅ Yᴇᴅᴜᴛʜᴜᴋᴏɴɢᴀ  <code>/id</code></i>",
+                "<i>Gᴇᴛ ʏᴏᴜʀ Gʀᴏᴜᴘ ɪᴅ ʙʏ ᴀᴅᴅɪɴɢ ᴛʜɪꜱ ʙᴏᴛ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ᴀɴᴅ ᴜꜱᴇ  <code>/id</code></i>",
                 quote=True
             )
             return
@@ -37,12 +37,12 @@ async def addconnection(client, message):
                 and st.status != enums.ChatMemberStatus.OWNER
                 and userid not in ADMINS
         ):
-            await message.reply_text("Uɴɢᴀ Gʀᴏᴜᴘ Yᴇɴɴᴀ Kᴀɴᴅɪᴘᴀ Aᴅᴍɪɴ Aᴋᴀɴᴜᴍ", quote=True)
+            await message.reply_text("Yᴏᴜ ꜱʜᴏᴜʟᴅ ʙᴇ ᴀɴ ᴀᴅᴍɪɴ ɪɴ Gɪᴠᴇɴ ɢʀᴏᴜᴘ!", quote=True)
             return
     except Exception as e:
         logger.exception(e)
         await message.reply_text(
-            "Invalid Group ID!\n\nIf correct, Nᴀ Uɴɢᴀ Gʀᴏᴜᴘ Lᴀ Eʀᴜᴋᴇɴ ɴᴀ • Cʜᴇᴄᴋ Pᴀɴɴᴜɴɢᴀ!!",
+            "ɪɴᴠᴀʟɪᴅ ɢʀᴏᴜᴘ ɪᴅ!\n\nIғ ᴄᴏʀʀᴇᴄᴛ, Mᴀᴋᴇ ꜱᴜʀᴇ I'ᴍ ᴘʀᴇꜱᴇɴᴛ ɪɴ ʏᴏᴜʀ ɢʀᴏᴜᴘ!!",
             quote=True,
         )
 
@@ -56,7 +56,7 @@ async def addconnection(client, message):
             addcon = await add_connection(str(group_id), str(userid))
             if addcon:
                 await message.reply_text(
-                    f"SᴜᴄᴄᴇssFᴜʟʟʏ Jᴏɪɴ Pᴀɴɴɪᴛᴇɴ Tᴏ **{title}**\nNow Mᴀɴᴀɢᴇ Uʀ Gʀᴏᴜᴘ Sᴇᴛᴛɪɴɢ Iɴ Mʏ Pᴍ!",
+                    f"sᴜᴄᴄᴇssғᴜʟʟ ᴄᴏɴɴᴇᴄᴛᴇᴅ ɪɴ **{title}**\nNow Mᴀɴᴀɢᴇ Uʀ Gʀᴏᴜᴘ Sᴇᴛᴛɪɴɢ Iɴ Mʏ Pᴍ!",
                     quote=True,
                     parse_mode=enums.ParseMode.MARKDOWN
                 )
@@ -68,14 +68,14 @@ async def addconnection(client, message):
                     )
             else:
                 await message.reply_text(
-                    "Nᴀ Aʟʀᴇᴀᴅʏ Iɴᴛʜᴀ Gʀᴏᴜᴘ Lᴀ Jᴏɪɴ Pᴀɴɴɪᴛᴇɴ",
+                    "ʏᴏᴜ'ʀᴇ ᴀʟʀᴇᴀᴅʏ ᴄᴏɴɴᴇᴄᴛᴇᴅ ᴛᴏ ᴛʜɪs ᴄʜᴀᴛ",
                     quote=True
                 )
         else:
-            await message.reply_text("Iɴᴛʜᴀ Gʀᴏᴜᴘ Lᴀ Eɴɴᴀ Aᴅᴍɪɴ Aᴋᴜɴɢᴀ", quote=True)
+            await message.reply_text("ᴀᴅᴅ ᴍᴇ ᴀs ᴀᴅᴍɪɴ ɪɴ ᴛʜɪs ɢʀᴏᴜᴘ", quote=True)
     except Exception as e:
         logger.exception(e)
-        await message.reply_text('Eᴛʜᴏ Pʀᴏʙʟᴇᴍ Tʜɪʀᴜᴍʙɪ Tʀʏ Pᴀɴɴᴜɴɢᴀ', quote=True)
+        await message.reply_text('sᴏᴍᴇ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀs ᴛʀʏ ᴀɢᴀɪɴ ʟᴀᴛᴇʀ !.', quote=True)
         return
 
 
@@ -83,11 +83,11 @@ async def addconnection(client, message):
 async def deleteconnection(client, message):
     userid = message.from_user.id if message.from_user else None
     if not userid:
-        return await message.reply(f"Nᴇɴɢᴀ Aᴅᴅʀᴇss Iʟʟᴀ Tʜᴀ Aᴅᴍɪɴ Use /connect {message.chat.id} in PM")
+        return await message.reply(f"Yᴏᴜ ᴀʀᴇ ᴀɴᴏɴʏᴍᴏᴜꜱ ᴀᴅᴍɪɴ. Uꜱᴇ /connect {message.chat.id} in PM")
     chat_type = message.chat.type
 
     if chat_type == enums.ChatType.PRIVATE:
-        await message.reply_text("Run /connections Tᴏ Nᴀ EɴTʜᴀ EɴTʜᴀ Gʀᴏᴜᴘ Lᴀ Eʀᴜᴋᴇɴ Nᴜ Pᴀʀᴜɴɢᴀ!", quote=True)
+        await message.reply_text("Run /connections ᴛᴏ ᴠɪᴇᴡs ᴏʀ ᴅɪsᴄᴏɴɴᴇᴄᴛ ᴀɴʏ ɢʀᴏᴜᴘ!", quote=True)
 
     elif chat_type in [enums.ChatType.GROUP, enums.ChatType.SUPERGROUP]:
         group_id = message.chat.id
@@ -102,9 +102,9 @@ async def deleteconnection(client, message):
 
         delcon = await delete_connection(str(userid), str(group_id))
         if delcon:
-            await message.reply_text("SᴜᴄᴄᴇssFᴜʟʟʏ Iɴᴛʜᴀ Gʀᴏᴜᴘ Vɪᴛᴛᴜ Vᴇʟɪʏᴀ Pᴏɪᴛᴇɴ", quote=True)
+            await message.reply_text("sᴜᴄᴄᴇsғᴜʟʟʏ ᴅɪsᴄᴏɴɴᴇᴄᴛᴇᴅ ᴛᴏ ᴛʜᴇ ᴄʜᴀᴛ", quote=True)
         else:
-            await message.reply_text("Nᴀ Iɴᴜᴍ Iɴᴛʜᴀ Gʀᴏᴜᴘ Lᴀ Cᴏɴɴᴇᴄᴛ Aɢᴀʟᴀ\nDo /connect to connect.", quote=True)
+            await message.reply_text("ᴛʜɪs ᴄʜᴀᴛ ɪs'ɴᴛ ᴄᴏɴɴᴇᴄᴛ ᴛᴏ ᴍᴇ\nDo /connect to connect.", quote=True)
 
 
 @Client.on_message(filters.private & filters.command(["connections"]))
@@ -114,7 +114,7 @@ async def connections(client, message):
     groupids = await all_connections(str(userid))
     if groupids is None:
         await message.reply_text(
-            "Eɴᴛʜᴀ Gʀᴏᴜᴘ Lᴀʏᴜᴍ Nᴀ Iʟʟᴀ Fɪʀsᴛ Aᴅᴅ Pᴀɴɴᴜɴɢᴀ",
+            "ᴛʜᴇʀᴇ ᴀʀᴇ ɴᴏ ᴀᴄᴛɪᴠᴇ ᴄᴏɴɴᴇᴄᴛɪᴏɴs!! ᴄᴏɴɴᴇᴄᴛ sᴏᴍᴇ ɢʀᴏᴜᴘs ғɪʀsᴛ",
             quote=True
         )
         return
@@ -136,12 +136,12 @@ async def connections(client, message):
             pass
     if buttons:
         await message.reply_text(
-            "Uɴɢᴀ Gʀᴏᴜᴘ Dᴇᴛᴀɪʟs ;\n\n",
+            "ʏᴏᴜʀ ᴄᴏɴɴᴇᴄᴛᴇᴅ ɢʀᴏᴜᴘ ᴅᴇᴛᴀɪʟs ;\n\n",
             reply_markup=InlineKeyboardMarkup(buttons),
             quote=True
         )
     else:
         await message.reply_text(
-            "Eɴᴛʜᴀ Gʀᴏᴜᴘ Lᴀʏᴜᴍ Nᴀ Iʟʟᴀ Fɪʀsᴛ Aᴅᴅ Pᴀɴɴᴜɴɢᴀ.",
+            "ᴛʜᴇʀᴇ ᴀʀᴇ ɴᴏ ᴀᴄᴛɪᴠᴇ ᴄᴏɴɴᴇᴄᴛɪᴏɴs!! ᴄᴏɴɴᴇᴄᴛ sᴏᴍᴇ ɢʀᴏᴜᴘs ғɪʀsᴛ.",
             quote=True
         )
