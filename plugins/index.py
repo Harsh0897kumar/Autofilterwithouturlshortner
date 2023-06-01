@@ -31,7 +31,7 @@ async def index_files(bot, query):
         return await query.answer('Wait until previous process complete.', show_alert=True)
     msg = query.message
 
-    await query.answer("Wᴀɪᴛ Pᴀɴɴᴜɴɢᴀ...⏳", show_alert=True)
+    await query.answer("Pʀᴏᴄᴇssɪɴɢ....⏳", show_alert=True)
     if int(from_user) not in ADMINS:
         await bot.send_message(int(from_user),
                                f'Yᴏᴜʀ Sᴜʙᴍɪssɪᴏɴ ғᴏʀ ɪɴᴅᴇxɪɴɢ {ᴄʜᴀᴛ} ʜᴀs ʙᴇᴇɴ ᴀᴄᴄᴇᴘᴛᴇᴅ ʙʏ ᴏᴜʀ ᴍᴏᴅᴇʀᴀᴛᴏʀs ᴀɴᴅ ᴡɪʟʟ ʙᴇ ᴀᴅᴅᴇᴅ sᴏᴏɴ.',
@@ -77,7 +77,7 @@ async def send_for_index(bot, message):
     try:
         k = await bot.get_messages(chat_id, last_msg_id)
     except:
-        return await message.reply('Nᴀ Aɴᴛʜᴀ Pʀɪᴠᴀᴛᴇ Cʜᴀɴɴᴇʟᴀ Aᴅᴍɪɴ Aʜ Eʀᴜᴋᴇɴ ɴᴀɴᴜ Cʜᴇᴄᴋ Pᴀɴɴᴜɴɢᴀ')
+        return await message.reply('ᴍᴀᴋᴇ sᴜʀᴇ ɪᴀᴍ ᴀᴅᴍɪɴ ɪɴ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ ɪғ ᴛʜᴇ ᴄʜᴀɴɴᴇʟ ɪs ᴘʀɪᴠᴀᴛᴇ')
     if k.empty:
         return await message.reply('This may be group and iam not a admin of the group.')
 
@@ -100,7 +100,7 @@ async def send_for_index(bot, message):
         try:
             link = (await bot.create_chat_invite_link(chat_id)).invite_link
         except ChatAdminRequired:
-            return await message.reply('Nᴀ Aɴᴛʜᴀ Cʜᴀᴛ Lᴀ Aᴅᴍɪɴ Aʜ Eʀᴜᴋᴇɴ ɴᴀɴᴜ Cʜᴇᴄᴋ Pᴀɴɴɪᴋᴏɴɢᴀ Wɪᴛʜ Gᴇɴᴇʀᴀᴛᴇ Iɴᴠɪᴛᴇ Lɪɴᴋ Pᴇʀᴍɪssɪᴏɴ.')
+            return await message.reply('ᴍᴀᴋᴇ sᴜʀᴇ ᴀᴅᴍɪɴ ɪɴ ᴛʜᴇ ᴡɪᴛʜ ᴡɪᴛʜ ɪɴᴠɪᴛᴇ ʟɪɴᴋ ᴘᴇʀᴍɪssɪᴏɴ')
     else:
         link = f"@{message.forward_from_chat.username}"
     buttons = [
@@ -117,7 +117,7 @@ async def send_for_index(bot, message):
     await bot.send_message(LOG_CHANNEL,
                            f'#IndexRequest\n\nBy : {message.from_user.mention} (<code>{message.from_user.id}</code>)\nChat ID/ Username - <code> {chat_id}</code>\nLast Message ID - <code>{last_msg_id}</code>\nInviteLink - {link}',
                            reply_markup=reply_markup)
-    await message.reply('TʜᴀɴᴋYᴏᴜ Fᴏʀ ᴛʜᴇ Cᴏɴᴛʀɪʙᴜᴛɪᴏɴ, Wᴀɪᴛ Fᴏʀ Mʏ Mᴏᴅᴇʀᴀᴛᴏʀs ᴛᴏ ᴠᴇʀɪғʏ ᴛʜᴇ ғɪʟᴇs.')
+    await message.reply('ThankYou For the Contribution, Wait For My Moderators to verify the files.')
 
 
 @Client.on_message(filters.command('setskip') & filters.user(ADMINS))
@@ -131,7 +131,7 @@ async def set_skip_number(bot, message):
         await message.reply(f"Sᴜᴄᴄᴇssғᴜʟʟʏ sᴇᴛ SKIP ɴᴜᴍʙᴇʀ ᴀs {skip}")
         temp.CURRENT = int(skip)
     else:
-        await message.reply("Gɪᴠᴇ Mᴇ A Nᴜᴍʙᴇʀ Sᴋɪᴏ")
+        await message.reply("ɢɪᴠᴇ ᴍᴇ ᴀ sᴋɪᴘ ɴᴜᴍʙᴇʀ")
 
 
 async def index_files_to_db(lst_msg_id, chat, msg, bot):
