@@ -82,12 +82,7 @@ async def next_page(bot, query):
             ]
             for file in files
         ]
-        btn.insert(0, 
-        [
-            InlineKeyboardButton('Share ans Support Us', url='https://t.me/Get_Update_Official')
-        ]
-    )
-    btn.insert(1, 
+    btn.insert(0, 
         [
             InlineKeyboardButton('Channel', url='https://t.me/Get_Update_Official'),
             InlineKeyboardButton('Contact', url='https://t.me/Harsh_Kumar0001')
